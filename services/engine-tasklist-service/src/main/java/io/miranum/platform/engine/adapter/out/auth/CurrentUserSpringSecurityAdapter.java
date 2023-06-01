@@ -1,6 +1,8 @@
 package io.miranum.platform.engine.adapter.out.auth;
 
 import io.holunda.polyflow.view.auth.User;
+import io.miranum.platform.engine.application.port.out.UserContext.UserContextOutCommand;
+import io.miranum.platform.engine.application.port.out.UserContext.UserContextOutPort;
 import io.miranum.platform.tasklist.application.port.out.security.CurrentUserPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -12,12 +14,12 @@ import java.util.Collections;
  */
 @Component
 @RequiredArgsConstructor
-public class CurrentUserSpringSecurityAdapter implements CurrentUserPort {
-
+public class CurrentUserSpringSecurityAdapter implements CurrentUserPort, UserContextOutPort {
+    private String userId;
 
     @Override
     public User getCurrentUser() {
-        return new User("123456789", Collections.emptySet());
+        return new User(userId, Collections.emptySet());
     }
 
     /**
@@ -30,4 +32,8 @@ public class CurrentUserSpringSecurityAdapter implements CurrentUserPort {
         return getCurrentUser().getUsername();
     }
 
+    @Override
+    public void getCurrentUser(UserContextOutCommand command) {
+        userId = command.getUserId();
+    }
 }
