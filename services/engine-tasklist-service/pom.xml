@@ -92,14 +92,6 @@
             </exclusions>
         </dependency>
 
-        <!-- Miranum Deployment -->
-        <dependency>
-            <groupId>io.miragon.miranum</groupId>
-            <artifactId>miranum-deployment-receiver-rest-starter</artifactId>
-            <version>0.2.0</version>
-        </dependency>
-
-
         <!--- Libs -->
         <dependency>
             <groupId>org.flywaydb</groupId>
