@@ -57,7 +57,7 @@ services:
       - internal
 
   deployment:
-    image: miragon/miranum-deployment-service:local-latest
+    image: miragon/miranum-deployment-service:latest
     container_name: miranum-deployment
     ports:
       - "8092:8080"
