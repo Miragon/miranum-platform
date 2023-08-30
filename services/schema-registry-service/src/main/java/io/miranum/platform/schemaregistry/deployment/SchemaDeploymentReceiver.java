@@ -8,6 +8,7 @@ import io.miragon.miranum.deploymentreceiver.application.DeploymentFailedExcepti
 import io.miragon.miranum.deploymentreceiver.application.ports.out.MiranumDeploymentReceiver;
 import io.miragon.miranum.deploymentreceiver.domain.Deployment;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class SchemaDeploymentReceiver implements MiranumDeploymentReceiver {
 
     private final SaveSchemaUseCase saveSchemaUseCase;
@@ -29,7 +31,9 @@ public class SchemaDeploymentReceiver implements MiranumDeploymentReceiver {
                             .orElseThrow(() -> new DeploymentFailedException("No key found in schema " + deployment.getFilename()));
             final SaveSchemaInCommand saveSchemaInCommand = new SaveSchemaInCommand(deployment.getNamespace(), schemaRef, tags, file);
             this.saveSchemaUseCase.saveSchema(saveSchemaInCommand);
+            log.info("Deployed schema {}", deployment.getFilename());
         } catch (final IOException e) {
+            log.error("Could not parse schema {}", deployment.getFilename(), e);
             throw new DeploymentFailedException("Could not parse schema " + deployment.getFilename());
         }
     }
