@@ -25,7 +25,7 @@ public class SchemaDeploymentReceiver implements MiranumDeploymentReceiver {
 
     @Override
     public void deploy(final Deployment deployment, final List<String> tags) {
-        // process configs and forms are both json schemas and saved in the same way
+        // process configs and forms are both json schemas and saved the same way
         if (deployment.getType().equalsIgnoreCase("form") || deployment.getType().equalsIgnoreCase("config")) {
             try {
                 final JsonNode jsonSchema = this.objectMapper.readTree(deployment.getFile());
