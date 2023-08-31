@@ -26,9 +26,5 @@ public class EngineDeploymentReceiver implements MiranumDeploymentReceiver {
             log.info("Deploying DMN artifact: {}", deployment.getFilename());
             this.artifactDeploymentUseCase.deployDmn(deployment.getFile(), deployment.getFilename(), deployment.getNamespace(), tags);
         }
-        if (deployment.getType().equalsIgnoreCase("config")) {
-            log.warn("Deploying Process Config is currently not supported");
-            // TODO process configs
-        }
     }
 }

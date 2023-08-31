@@ -25,16 +25,23 @@ public class SchemaDeploymentReceiver implements MiranumDeploymentReceiver {
 
     @Override
     public void deploy(final Deployment deployment, final List<String> tags) {
-        try {
-            final JsonNode file = this.objectMapper.readTree(deployment.getFile());
-            final String schemaRef = Optional.of(file.get("key")).map(JsonNode::asText)
-                            .orElseThrow(() -> new DeploymentFailedException("No key found in schema " + deployment.getFilename()));
-            final SaveSchemaInCommand saveSchemaInCommand = new SaveSchemaInCommand(deployment.getNamespace(), schemaRef, tags, file);
-            this.saveSchemaUseCase.saveSchema(saveSchemaInCommand);
-            log.info("Deployed schema {}", deployment.getFilename());
-        } catch (final IOException e) {
-            log.error("Could not parse schema {}", deployment.getFilename(), e);
-            throw new DeploymentFailedException("Could not parse schema " + deployment.getFilename());
+        // process configs and forms are both json schemas and saved in the same way
+        if (deployment.getType().equalsIgnoreCase("form") || deployment.getType().equalsIgnoreCase("config")) {
+            try {
+                final JsonNode jsonSchema = this.objectMapper.readTree(deployment.getFile());
+                this.deployJsonSchema(jsonSchema, deployment.getNamespace(), tags);
+                log.info("Deployed json schema {} of type {}", deployment.getFilename(), deployment.getType());
+            } catch (final IOException e) {
+                log.error("Could not parse schema {}", deployment.getFilename(), e);
+                throw new DeploymentFailedException("Could not parse schema " + deployment.getFilename());
+            }
         }
+    }
+
+    private void deployJsonSchema(final JsonNode schema, final String namespace, final List<String> tags) {
+        final String schemaRef = Optional.of(schema.get("key")).map(JsonNode::asText)
+                .orElseThrow(() -> new DeploymentFailedException("No key found in schema " + schema.get("key")));
+        final SaveSchemaInCommand saveSchemaInCommand = new SaveSchemaInCommand(namespace, schemaRef, tags, schema);
+        this.saveSchemaUseCase.saveSchema(saveSchemaInCommand);
     }
 }
