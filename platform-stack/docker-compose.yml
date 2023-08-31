@@ -61,8 +61,6 @@ services:
     container_name: miranum-deployment
     ports:
       - "8092:8080"
-    profiles:
-      - deployment
     restart: unless-stopped
     env_file:
       - .env
@@ -74,7 +72,7 @@ services:
       MIRANUM_DEPLOYMENT_SERVER_FORM_TEST_URL: http://host.docker.internal
       MIRANUM_DEPLOYMENT_SERVER_FORM_TEST_PORT: 8091
       MIRANUM_DEPLOYMENT_SERVER_CONFIG_TEST_URL: http://host.docker.internal
-      MIRANUM_DEPLOYMENT_SERVER_CONFIG_TEST_PORT: 8090
+      MIRANUM_DEPLOYMENT_SERVER_CONFIG_TEST_PORT: 8091
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:
