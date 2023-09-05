@@ -6,17 +6,17 @@ updates:
     schedule:
       interval: "daily"
     labels:
-      - "Technical Dept"
+      - "Technical Debt"
   - package-ecosystem: "maven"
     directory: "/"
     schedule:
       interval: "daily"
     labels:
-      - "Technical Dept"
+      - "Technical Debt"
   - package-ecosystem: npm
     directory: "/apps"
     target-branch: "dev"
     labels:
-      - "Technical Dept"
+      - "Technical Debt"
     schedule:
       interval: weekly
