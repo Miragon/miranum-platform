@@ -14,7 +14,7 @@
     <properties>
         <rest.base-package-name>io.miranum.platform.tasklist.adapter.in.rest</rest.base-package-name>
         <wiremock.version>2.35.0</wiremock.version>
-        <camunda-platform-7-mockito.version>6.18.0</camunda-platform-7-mockito.version>
+        <camunda-platform-7-mockito.version>6.19.0</camunda-platform-7-mockito.version>
     </properties>
 
     <dependencies>
@@ -84,7 +84,7 @@
         <dependency>
             <groupId>io.muenchendigital.digiwf</groupId>
             <artifactId>digiwf-json-serialization-starter</artifactId>
-            <version>0.17.18</version>
+            <version>0.18.0</version>
         </dependency>
         <dependency>
             <groupId>io.miranum.platform</groupId>
@@ -112,7 +112,7 @@
         <dependency>
             <groupId>org.openapitools</groupId>
             <artifactId>jackson-databind-nullable</artifactId>
-            <version>0.2.2</version>
+            <version>0.2.6</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
