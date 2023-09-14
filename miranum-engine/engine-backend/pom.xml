@@ -87,7 +87,7 @@
         <dependency>
             <groupId>io.muenchendigital.digiwf</groupId>
             <artifactId>digiwf-json-serialization-starter</artifactId>
-            <version>0.17.9</version>
+            <version>0.18.0</version>
         </dependency>
 
         <!-- Miranum Deployment -->
@@ -105,7 +105,7 @@
         <dependency>
             <groupId>org.openapitools</groupId>
             <artifactId>jackson-databind-nullable</artifactId>
-            <version>0.2.2</version>
+            <version>0.2.6</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
