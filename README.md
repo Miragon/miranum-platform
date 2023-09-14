@@ -39,6 +39,14 @@ Content of this readme:
 * [License](#license)
 
 ## Use-Cases
+Miranum Platform is a solution for complex human task management workflows. 
+With its unified Tasklist and JSON-based forms it represents a generic approach to task management,
+suitable for automating many different processes. 
+Besides it provides all necessary components for task management purposes such as the Minio S3 storage 
+as well as Keycloak. 
+
+Even though Miranum Platform was created out of a project in the public sector it can be used versatile in many different 
+industries. Whenever you deal with human task management and need a centralized Tasklist, Miranum Platform is a possible choice.
 
 ## Platform Overview
 Miranum Platform uses Camunda 7 as process engine with Polyflow for task handling. 
