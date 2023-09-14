@@ -66,6 +66,12 @@ Components:
 * Minio: MinIO is a High Performance Object Storage which is API compatible with Amazon S3 cloud storage service.
 
 ## Get Started
+To get started with Miranum Platform please navigate to the [platform-stack](./platform-stack) folder and follow the 
+instructions in the [README.md](./platform-stack/README.md). Once the infrastructure components have started you can run the
+`local` run configuration. Make sure that you have performed a `mvn clean build` before doing so. 
+
+A more in depth [miranum-stack-showcase](https://miranum.com/docs/guides/showcases/miranum-stack/miranum-stack-showcase/)
+can be found in our documentation. 
 
 ## Contributing
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any
