@@ -13,7 +13,7 @@
     <artifactId>deployment-service</artifactId>
 
     <properties>
-        <miranum-ide.version>0.3.0</miranum-ide.version>
+        <miranum-ide.version>0.3.1</miranum-ide.version>
     </properties>
 
     <dependencies>
