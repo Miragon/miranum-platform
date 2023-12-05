@@ -80,7 +80,7 @@ services:
       - internal
 
   deployment:
-    image: miragon/miranum-platform-deployment-service:${MIRANUM_PLATFORM_VERSION}
+    image: miragon/miranum-deployment-service:${MIRANUM_PLATFORM_VERSION}
     container_name: miranum-deployment
     ports:
       - "8092:8080"
@@ -120,7 +120,7 @@ services:
         condition: service_healthy
     ports:
       - '9090:9090'
-    command: 'start-dev --http-relative-path /auth --http-port=9090'
+    command: 'start --http-relative-path /auth --http-port=9090'
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:9090/auth/realms/miranum/.well-known/openid-configuration" ]
       interval: 5s
@@ -128,6 +128,7 @@ services:
       retries: 30
     environment:
       KC_HOSTNAME: keycloak # this hostname must be resolved to 127.0.0.1 locally. Add it to your hosts file.
+      KC_PROXY: "edge"
       KC_HOSTNAME_STRICT: 'false'
       KC_DB: ${LOCAL_KEYCLOAK_DB_VENDOR}
       KC_TRANSACTION_XA_ENABLED: 'false'
