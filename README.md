@@ -25,6 +25,8 @@
     </p>
 </div>
 
+> Notice: This repository, miranum-platform, is now archived. All future development and updates will take place in the [miranum](https://github.com/Miragon/miranum) repository. Please refer to the new repository for the latest changes and contributions.
+
 
 ## About The Project
 Miranum Platform is an open source production ready process automation platform with a focus on human-task driven processes.
